@@ -1,0 +1,27 @@
+bool matSearch(vector<vector<int>> &mat, int x) {
+        
+        int n=mat.size();
+        int m=mat[0].size();
+        
+        int start=0;
+        int end=m-1;
+        
+        while(start<n && end>=0)
+        {
+            if(mat[start][end]==x)
+            {
+                return true;
+            }
+            
+            else if(mat[start][end]<x)
+            {
+                start++;
+            }
+            
+            else if(mat[start][end]>x)
+            {
+                end--;
+            }
+        }
+        return false;
+    }
