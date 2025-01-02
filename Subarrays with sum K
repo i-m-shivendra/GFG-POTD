@@ -1,0 +1,48 @@
+// 1. Bruteforce approach - TC - O(n^2)  SC - O(1)
+class Solution {
+  public:
+    int countSubarrays(vector<int> &arr, int k) {
+      
+        int n=arr.size();
+        
+        int ans=0;
+        for(int i=0;i<n;i++)
+        {
+            int sum=0;
+            for(int j=i;j<n;j++)
+            {
+                sum += arr[j];
+                if(sum==k)
+                {
+                    ans++;
+                }
+            }
+        }
+        return ans;
+    }
+};
+
+
+//2. Optimal Approach - TC-O(n)   SC-O(n)
+class Solution {
+  public:
+    int countSubarrays(vector<int> &arr, int k) {
+        
+        int sum=0;
+        int count=0;
+        unordered_map<int,int> mp;
+        mp[0]=1;
+        
+        for(int i=0;i<arr.size();i++)
+        {
+            sum += arr[i];
+            
+            if(mp[sum-k])
+            {
+                count += mp[sum-k];
+            }
+            mp[sum]++;
+        }
+        return count;
+    }
+};
