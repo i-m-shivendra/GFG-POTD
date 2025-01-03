@@ -1,0 +1,51 @@
+// Brute-force approach TC-O(n^2) SC-O(1)
+class Solution {
+  public:
+    long subarrayXor(vector<int> &arr, int k) {
+        
+        int N=arr.size();
+        int count=0;
+        
+        for(int i=0;i<N;i++)
+        {
+            int xorr=0;
+            for(int j=i;j<N;j++)
+            {
+                xorr = xorr ^ arr[j];
+                if(xorr==k)
+                {
+                    count += 1;
+                }
+            }
+        }
+        return count;
+    }
+};
+
+
+//Optimal Approach      TC - O(n)     SC-O(n) 
+
+class Solution {
+  public:
+    long subarrayXor(vector<int> &arr, int k) {
+        
+        int count=0;
+        int xorr=0;
+        
+        unordered_map <int,int> mp;
+        for(int i=0;i<arr.size();i++)
+        {
+            xorr ^= arr[i];
+            if(xorr == k)
+            {
+                count += 1;
+            }
+            if(mp.find(xorr^k)!=mp.end())
+            {
+                count += mp[xorr^k];
+            }
+            mp[xorr]++;
+        }
+        return count;
+    }
+};
