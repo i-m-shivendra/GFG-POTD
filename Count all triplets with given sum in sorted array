@@ -1,0 +1,94 @@
+Bruteforce approach      TC-O(n^3)   SC-O(1)
+class Solution {
+  public:
+    int countTriplets(vector<int> &arr, int target) {
+        
+        int n=arr.size();
+        int count=0;
+        for(int i=0;i<n-2;i++)
+        {
+            for(int j=i+1;j<n-1;j++)
+            {
+                for(int k=j+1;k<n;k++)
+                {
+                    if(arr[i]+arr[j]+arr[k]==target)
+                    {
+                        count += 1;
+                    }
+                }
+            }
+        }
+        return count;
+    }
+};
+
+----------------------------------------------------------------------------------------------------------------
+
+Better approach   TC-O(n^2)   SC-O(1)
+class Solution {
+  public:
+    int countTriplets(vector<int> &arr, int target) {
+        int n=arr.size();
+        int count=0;
+        for(int i=0;i<n-2;i++)
+        {
+            int start =i+1;
+            int end=n-1;
+            while(start<end)
+            {
+                int sum=arr[i]+arr[start]+arr[end];
+                if(sum==target)
+                {
+                    count++;
+                    int left=start;
+                    int right=end;
+                    while(left+1<right && arr[left]==arr[left+1])
+                    {
+                        count++;
+                        left++;
+                    }
+                    left=start;
+                    right=end;
+                    while(left+1<right&&arr[right]==arr[right-1])
+                    {
+                        count++;
+                        right--;
+                    }
+                    start++;
+                    end--;
+                }
+                else if(sum<target)
+                {
+                    start++;
+                }
+                else
+                {
+                    end--;
+                }
+            }
+        }
+        return count;
+    }
+};
+
+-----------------------------------------------------------------------------------------------------------------------
+
+Optimal approach       TC-O(n)   SC-O(1)
+
+class Solution {
+  public:
+    int countTriplets(vector<int> &arr, int target) {
+        int n = arr.size(), ans = 0;
+        unordered_map<int, int> mp;
+        for(auto& i : arr) mp[i]++;
+        for(int i = 0; i < n; i++){
+            mp[arr[i]]--;
+            for(int j = 0; j < i; j++){
+                if(mp.find(target - arr[i] - arr[j]) != mp.end()){
+                    ans += mp[target - arr[i] - arr[j]];
+                }
+            }
+        }
+        return ans;
+    }
+};
