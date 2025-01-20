@@ -1,0 +1,49 @@
+/* Link list Node
+struct Node {
+  int data;
+  struct Node *next;
+
+  Node(int x) {
+    data = x;
+    next = NULL;
+  }
+};
+*/
+class Solution {
+  public:
+    Node* sortedMerge(Node* head1, Node* head2) {
+        Node* dummy=new Node(-1);
+        Node* curr=dummy;
+        
+        Node* ptr1=head1;
+        Node* ptr2=head2;
+        
+        while(ptr1!=NULL && ptr2!=NULL)
+        {
+            if(ptr1->data <= ptr2->data)
+            {
+                dummy->next=ptr1;
+                dummy=dummy->next;
+                ptr1=ptr1->next;
+            }
+            else
+            {
+                dummy->next=ptr2;
+                dummy=dummy->next;
+                ptr2=ptr2->next;
+            }
+        }
+        
+        if(ptr1!=NULL)
+        {
+            dummy->next=ptr1;
+        }
+        
+        if(ptr2!=NULL)
+        {
+            dummy->next=ptr2;
+        }
+        
+        return curr->next;
+    }
+};
