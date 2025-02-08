@@ -1,0 +1,70 @@
+class Solution {
+    
+    private:
+    
+    void LeftPrint(Node* root,vector<int> &ans)
+    {
+        if((root == NULL) || (root->left == NULL && root->right == NULL))
+        {
+            return;
+        }
+        ans.push_back(root->data);
+        if(root->left)
+        {
+            LeftPrint(root->left,ans);
+        }
+        else
+        {
+            LeftPrint(root->right,ans);
+        }
+    }
+    void LeafPrint(Node* root,vector<int> &ans)
+    {
+        if(root == NULL)
+        {
+            return;
+        }
+        if(root->left == NULL && root->right == NULL)
+        {
+            ans.push_back(root->data);
+        }
+        LeafPrint(root->left,ans);
+        LeafPrint(root->right,ans);
+    }
+    void RightPrint(Node* root,vector<int> &ans)
+    {
+        if((root == NULL) || (root->left == NULL && root->right == NULL))
+        {
+            return;
+        }
+        if(root->right)
+        {
+            RightPrint(root->right,ans);
+        }
+        else
+        {
+            RightPrint(root->left,ans);
+        }
+        ans.push_back(root->data);
+    }
+  public:
+    vector<int> boundaryTraversal(Node *root) {
+        vector<int> ans  ;
+        if(root == NULL){
+            return ans;
+        }
+        //Left Part
+        ans.push_back(root->data);
+        LeftPrint(root->left,ans);
+        
+        //Left Subtree Leaf Node
+        LeafPrint(root->left,ans);
+        //Right Subtree Leaf Node
+        LeafPrint(root->right,ans);
+        
+        //Right Node
+        RightPrint(root->right,ans);
+        
+        return ans;
+    }
+};
