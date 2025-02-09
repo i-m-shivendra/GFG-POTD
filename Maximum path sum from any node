@@ -1,0 +1,17 @@
+class Solution {
+  public:
+    // Function to return maximum path sum from any node in a tree.
+    int mxsum=INT_MIN;
+    int traverse(Node *root){
+        if(root==NULL)return 0;
+        int leftsum=traverse(root->left);
+        int rightsum=traverse(root->right);
+        mxsum=max({mxsum,leftsum+root->data,rightsum+root->data,root->data,leftsum+rightsum+root->data});
+        int temp=max({leftsum+root->data,rightsum+root->data,root->data});
+        return temp;
+    }
+    int findMaxSum(Node *root) {
+       traverse(root);
+       return mxsum;
+    }
+};
