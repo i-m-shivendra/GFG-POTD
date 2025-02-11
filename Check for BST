@@ -1,0 +1,25 @@
+class Solution {
+  public:
+  
+    bool isValid(Node* root, int mini, int maxi)
+    {
+        if(root==NULL)
+        {
+            return true;
+        }
+        
+        int val = root->data;
+        
+        if(val <= mini || val >= maxi)
+        {
+            return false;
+        }
+        
+        return isValid(root->left,mini,val) &&
+               isValid(root->right,val,maxi);
+    }
+    // Function to check whether a Binary Tree is BST or not.
+    bool isBST(Node* root) {
+        return isValid(root,INT_MIN,INT_MAX);
+    }
+};
