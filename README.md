@@ -1,2 +1,5 @@
-# GFG-POTD
-Hello everyone in this repository I'm gonna upload problem of the day that is posted daily on GeeksForGeeks. Let's Code, learn and grow together.
+## 🚀 Geeks for Geeks - Problem of the Day  
+
+- 🎯 **Committed to solving the Geeks for Geeks Problem of the Day** every day, sharpening problem-solving skills with a structured approach.  
+- 📚 **Building a rich collection of well-explained solutions**, making it a go-to resource for anyone preparing for coding interviews or competitive programming.  
+- 🚀 **Developing a strong coding habit** by solving problems daily, improving logic-building skills, and staying consistent with **DSA practice**.  
