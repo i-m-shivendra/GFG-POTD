@@ -61,8 +61,6 @@ class Solution {
                 Node* root = q.front();
                 q.pop();
                 
-                level.push_back(root->data);
-                
                 if(root->left != NULL){
                     q.push(root->left);
                 }
@@ -70,6 +68,7 @@ class Solution {
                 if(root->right != NULL){
                     q.push(root->right);
                 }
+                level.push_back(root->data);
             }
             ans.push_back(level);
         }
