@@ -11,26 +11,27 @@ class Solution {
     vector<int> bfs(vector<vector<int>> &adj) {
          // Code here
         int n=adj.size();
-        vector<int> res,vis(n,0);
+        vector<int> visited(n,0);
         queue<int> q;
         
-        q.push(0);
+        vector <int> ans;
         
-        vis[0]=1;
+        q.push(0);
+        visited[0]=1;
         
         while(!q.empty()){
             int node = q.front();
             q.pop();
-            res.push_back(node);
+            ans.push_back(node);
             
             for(auto it : adj[node]){
-                if(!vis[it]){
+                if(!visited[it]){
                     q.push(it);
-                    vis[it]=1;
+                    visited[it]=1;
                 }
             }
         }
-        return res; 
+        return ans; 
     }
 };
 
