@@ -21,8 +21,11 @@ class Solution {
         //Create ans vector
         vector<int> ans;
         
-        //calling dfs function
-        dfs(0,adj,visited,ans);
+        for(int i=0;i<V;i++){
+            if(!visited[i]){
+                dfs(i,adj,visited,ans);
+            }
+        }
         
         return ans;
     }
