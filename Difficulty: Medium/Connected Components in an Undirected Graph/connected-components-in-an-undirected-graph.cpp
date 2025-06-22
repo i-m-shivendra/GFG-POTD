@@ -1,9 +1,9 @@
 
 class Solution {
   private:
-    void dfs(int node,vector<vector<int>>& adjList,
-    vector<int>& visited,vector<int>& temp){
-        visited[node] = true;
+    void dfs(int node, vector<vector<int>>& adjList,
+    vector<int>& visited, vector<int>& temp){
+        visited[node] = 1;
         temp.push_back(node);
         
         for(auto it : adjList[node]){
@@ -14,7 +14,7 @@ class Solution {
     }
   public:
     vector<vector<int>> getComponents(int V, vector<vector<int>>& edges) {
-        //Create an adjacency List
+        //Creation of adjacency list
         vector<vector<int>> adjList(V);
         
         //Initialisation of adjacency list
@@ -23,11 +23,11 @@ class Solution {
             adjList[it[1]].push_back(it[0]);
         }
         
-        //Create an answer vector
-        vector<vector<int>> ans;
-        
         //Create a visited array
         vector<int> visited(V,0);
+        
+        //Craete an answer vector
+        vector<vector<int>> ans;
         
         for(int i=0;i<V;i++){
             if(!visited[i]){
