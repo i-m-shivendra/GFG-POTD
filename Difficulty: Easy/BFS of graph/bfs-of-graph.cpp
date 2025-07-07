@@ -1,7 +1,7 @@
 class Solution {
   private:
     void bfsImpl(int node, vector<vector<int>> &adj,
-    vector<int> &visited,vector<int>& ans){
+    vector<int>& visited, vector<int>& ans){
         visited[node] = 1;
         
         queue<int> q;
@@ -29,7 +29,7 @@ class Solution {
         //Create a visited array
         vector<int> visited(V,0);
         
-        //Create an ans vector
+        //Create an answer vector
         vector<int> ans;
         
         for(int i=0;i<V;i++){
