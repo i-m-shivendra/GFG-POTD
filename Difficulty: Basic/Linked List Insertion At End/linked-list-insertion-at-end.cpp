@@ -1,13 +1,22 @@
-/*Structure of the linked list node is as
-struct Node {
-  int data;
-  struct Node * next;
-  Node(int x) {
-    data = x;
-    next = NULL;
-  }
-}; */
+/*
+class Node {
+  public:
+    int data;
+    Node* next;
 
+    // Default constructor
+    Node() {
+        data = 0;
+        next = NULL;
+    }
+
+    // Parameterised Constructor
+    Node(int data) {
+        this->data = data;
+        this->next = NULL;
+    }
+};
+*/
 class Solution {
   public:
     Node *insertAtEnd(Node *head, int x) {
@@ -17,11 +26,20 @@ class Solution {
             return temp;
         }
         
-        Node* curr = head;
-        while(curr->next != NULL){
-            curr = curr -> next;
+        if(head->next == NULL){
+            head->next = temp;
+            temp->next = NULL;
+            return head;
         }
+        
+        Node* curr = head;
+        
+        while(curr->next != NULL){
+            curr = curr->next;
+        }
+        
         curr->next = temp;
+        
         return head;
     }
 };
